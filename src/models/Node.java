@@ -32,6 +32,6 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "Person ID:" + person + " NextNode:" + nextNode;
+		return "Person:" + person;
 	}
 }
