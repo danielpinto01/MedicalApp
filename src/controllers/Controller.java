@@ -14,13 +14,14 @@ public class Controller {
 	
 	private MainWindow mainWindow;
 	private Manager manager;
+	private Timer timer;
 	
 	public Controller() {
 		mainWindow = new MainWindow(this);
 		manager = new Manager();
 		addPersons(80);
 		manager.initSimulator();
-		Timer timer = new Timer(100, new ActionListener() {
+		timer = new Timer(100, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent t) {
 				mainWindow.addPerson(manager.getList());
