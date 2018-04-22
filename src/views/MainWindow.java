@@ -82,6 +82,10 @@ public class MainWindow extends JFrame{
 //		jPanelInit.repaint();
 //	}
 	
+	public void remove() {
+		jPanelInit.remove();
+	}
+	
 	public int getTextNumberPerson() {
 		return jDialogInit.getTextNumberPerson();
 	}

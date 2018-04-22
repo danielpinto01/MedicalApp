@@ -21,6 +21,7 @@ public class Controller implements ActionListener{
 		mainWindow = new MainWindow(this);
 		manager = new Manager();
 		showDialoginit();
+		showPanelinit();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -30,8 +31,10 @@ public class Controller implements ActionListener{
 			initApp();
 			break;
 		case STOP:
-//			manager.stopSimulator();
-//			timer.stop();
+			stopTimerC();
+			stopTimerManager();
+			stopTimerPerson();
+			mainWindow.remove();
 			break;
 		default:
 			break;
@@ -40,7 +43,6 @@ public class Controller implements ActionListener{
 	
 	
 	public void initApp() {
-		showPanelinit();
 		addPersons(getNumberPerson(mainWindow.getTextNumberPerson()));
 		manager.initSimulator();
 		//Tiempo de lugar a lugar
@@ -51,6 +53,18 @@ public class Controller implements ActionListener{
 			}
 		});
 		timer.start();
+	}
+	
+	public void stopTimerC() {
+		timer.stop();
+	}
+	
+	public void stopTimerPerson() {
+		manager.stopTimerPerson();
+	}
+
+	public void stopTimerManager() {
+		manager.stopTimerManager();
 	}
 
 	public int getNumberPerson(int numberPerson) {

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import models.Person;
@@ -17,7 +18,7 @@ public class JPanelInit extends JPanel{
 //	private Person person;
 	
 	public JPanelInit() {
-		setBackground(Color.DARK_GRAY);
+//		setBackground(Color.DARK_GRAY);
 		personList = new ArrayList<>();
 	}
 	
@@ -39,14 +40,19 @@ public class JPanelInit extends JPanel{
 				g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}
 			g.drawImage(new ImageIcon(getClass().getResource("/images/cam.gif")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
+			g.drawString(String.valueOf(person.getId()), person.getPosX(), person.getPosY());
+			
 			if (person.getPlaceInit() == Place.EXIT) {
+				g.clearRect(person.getPosX(), person.getPosY(), 60, 60);
 //				g.drawImage(new ImageIcon(getClass().getResource("/images/transparente.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}
 		}
 	}
 
-	public void changeImage() {
-		
+	public void remove() {
+		revalidate();
+		repaint();
+		removeAll();
 	}
 	
 	public void setPerson(ArrayList<Person> persons) {

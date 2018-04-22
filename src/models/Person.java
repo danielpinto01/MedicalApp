@@ -93,6 +93,10 @@ public class Person {
 		});
 		timer.start();
 	}
+	
+	public void stopTimerPerson() {
+		timer.stop();
+	}
 
 	public void setProxService(boolean proxService) {
 		this.proxService = proxService;
