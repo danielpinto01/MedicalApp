@@ -39,8 +39,8 @@ public class JPanelInit extends JPanel{
 				g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}
 			g.drawImage(new ImageIcon(getClass().getResource("/images/cam.gif")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
-			if (person.getPlaceFinal() == Place.EXIT) {
-				
+			if (person.getPlaceInit() == Place.EXIT) {
+//				g.drawImage(new ImageIcon(getClass().getResource("/images/transparente.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}
 		}
 	}

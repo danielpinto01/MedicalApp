@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.Timer;
 
@@ -42,8 +43,8 @@ public class Controller implements ActionListener{
 		showPanelinit();
 		addPersons(getNumberPerson(mainWindow.getTextNumberPerson()));
 		manager.initSimulator();
-		
-		timer = new Timer(1000, new ActionListener() {
+		//Tiempo de lugar a lugar
+		timer = new Timer(new Random().nextInt(100), new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent t) {
 				mainWindow.addPerson(manager.getList());
@@ -74,7 +75,7 @@ public class Controller implements ActionListener{
 			Person person = new Person(i, posX, 400, Place.INIT);
 			person.setPlaceFinal(manager.calculateService(person));
 			manager.addPersonToList(person);
-			posX += 25;
+			posX += 80;
 		}
 	}
 

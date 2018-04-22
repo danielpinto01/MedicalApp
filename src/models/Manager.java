@@ -18,7 +18,7 @@ public class Manager {
 		myQueue = new MyQueue();
 		initTree();
 	}
-	
+
 
 	public void initTree() {
 		NodePlace init = new NodePlace(Place.INIT);
@@ -62,61 +62,62 @@ public class Manager {
 			node.getPerson().initTimer();
 			node = node.getNextNode();
 		}
-		timer = new Timer(1000, new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent t) {
-				Node node = myQueue.getRootNode();
-				while (node != null) {
-					Person person = node.getPerson();
-					if (person.isProxService()) {
-						person.setPlaceInit(person.getPlaceFinal());
-						person.setPlaceFinal(calculateService(person));
-						person.setProxService(false);
-						timer.setDelay(new Random().nextInt(10000));
+		timer = new Timer(new Random().nextInt(5000), new ActionListener() {
+//			timer = new Timer(1000, new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent t) {
+					Node node = myQueue.getRootNode();
+					while (node != null) {
+						Person person = node.getPerson();
+						if (person.isProxService()) {
+							person.setPlaceInit(person.getPlaceFinal());
+							person.setPlaceFinal(calculateService(person));
+							person.setProxService(false);
+							timer.setDelay(new Random().nextInt(10000));
+						}
+						node = node.getNextNode();
 					}
-					node = node.getNextNode();
 				}
-			}
-		});
-		timer.start();
-	}
-	
-//	public void stopSimulator() {
-//		timer.stop();
-//	}
-
-	public Place calculateService(Person person) {
-		NodePlace auxNode = myTree.searchNode(person.getPlaceInit());
-		if (auxNode.getNodes().size() > 0) {
-			int child = auxNode.getNodes().size();
-			System.out.println(child);
-			Random random = new Random();
-			int position = random.nextInt(child);
-			return auxNode.getNodes().get(position).getPlace();
+			});
+			timer.start();
 		}
-		return null;
-	}
-	
 
-	public MyTree getMyTree() {
-		return myTree;
-	}
+		//	public void stopSimulator() {
+		//		timer.stop();
+		//	}
 
-	public void addPersonToList(Person person){
-		myQueue.addLastNode(new Node(person));
-	}
+		public Place calculateService(Person person) {
+			NodePlace auxNode = myTree.searchNode(person.getPlaceInit());
+			if (auxNode.getNodes().size() > 0) {
+				int child = auxNode.getNodes().size();
+				System.out.println(child);
+				Random random = new Random();
+				int position = random.nextInt(child);
+				return auxNode.getNodes().get(position).getPlace();
+			}
+			return null;
+		}
 
-	public void print() {
-		myQueue.print();
-	}
 
-	public ArrayList<Node> getInfoList() {
-		return myQueue.getInfoList();
-	}
+		public MyTree getMyTree() {
+			return myTree;
+		}
 
-	public MyQueue getMyQueue() {
-		return myQueue;
+		public void addPersonToList(Person person){
+			myQueue.addLastNode(new Node(person));
+		}
+
+		public void print() {
+			myQueue.print();
+		}
+
+		public ArrayList<Node> getInfoList() {
+			return myQueue.getInfoList();
+		}
+
+		public MyQueue getMyQueue() {
+			return myQueue;
+		}
+
 	}
-	
-}

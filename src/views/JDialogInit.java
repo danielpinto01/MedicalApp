@@ -39,7 +39,7 @@ public class JDialogInit  extends JDialog{
 		btnInit.addActionListener(controller);
 		btnInit.setActionCommand(Events.INIT.toString());
 		add(jTextFieldNumberPerson);
-		add(jTextFieldTime);
+//		add(jTextFieldTime);
 		add(btnInit);
 	}
 	
