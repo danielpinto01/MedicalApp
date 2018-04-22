@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -16,12 +17,10 @@ public class JPanelInit extends JPanel{
 //	private Person person;
 	
 	public JPanelInit() {
-//		setBackground(Color.DARK_GRAY);
+		setBackground(Color.DARK_GRAY);
 		personList = new ArrayList<>();
 	}
 	
-	
-
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);

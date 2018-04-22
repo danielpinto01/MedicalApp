@@ -34,7 +34,7 @@ public class JDialogInit  extends JDialog{
 		jTextFieldNumberPerson =  new JTextField();
 		jTextFieldNumberPerson.setBorder(BorderFactory.createTitledBorder("Numero"));
 		jTextFieldTime = new JTextField();
-		jTextFieldTime.setBorder(BorderFactory.createTitledBorder("Time"));
+		jTextFieldTime.setBorder(BorderFactory.createTitledBorder("Time [mili-segundos]"));
 		btnInit = new JButton("init");
 		btnInit.addActionListener(controller);
 		btnInit.setActionCommand(Events.INIT.toString());

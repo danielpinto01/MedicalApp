@@ -80,6 +80,7 @@ public class Person {
 	}
 
 	public void initTimer() {
+		//Tiempo que dura la persona en moverse de un servicio a otro
 		timer = new Timer(100, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent t) {
