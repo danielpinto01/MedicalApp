@@ -35,9 +35,9 @@ public class JPanelInit extends JPanel{
 		g.drawImage(Place.INIT.getImage().getImage(), Place.INIT.getPosX(), Place.INIT.getPosY(), 150, 150, this);
 		
 		for (Person person : personList) {
-			if (person.getPlaceInit() == Place.PHARMACY) {
-				g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
-			}
+//			if (person.getPlaceInit() == Place.PHARMACY) {
+//				g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
+//			}
 			g.drawImage(new ImageIcon(getClass().getResource("/images/cam.gif")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 		}
 	}
@@ -45,10 +45,6 @@ public class JPanelInit extends JPanel{
 	public void changeImage() {
 		
 	}
-
-//	public void setPerson(Person person) {
-//		this.person = person;
-//	}
 	
 	public void setPerson(ArrayList<Person> persons) {
 		this.personList = persons;
