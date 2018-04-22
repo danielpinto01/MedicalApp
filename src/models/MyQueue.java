@@ -58,5 +58,21 @@ public class MyQueue {
 
 	public Node getRootNode() {
 		return rootNode;
+	}
+
+
+	public void delete(Node node) {
+		Node actualNode = rootNode;
+		if (node == actualNode) {
+			rootNode = actualNode.getNextNode();
+		}else {
+			
+			while (actualNode != null) {
+				if (node == actualNode.getNextNode()) {
+					actualNode.setNextNode(node.getNextNode());
+				}
+				actualNode = actualNode.getNextNode();
+			}
+		}
 	}	
 }

@@ -36,6 +36,7 @@ public class JPanelInit extends JPanel{
 		g.drawImage(Place.EXIT.getImage().getImage(), Place.EXIT.getPosX(), Place.EXIT.getPosY(), 150, 150, this);
 		
 		for (Person person : personList) {
+			g.drawLine(1900, 400, person.getPosX(), person.getPosY());
 			if (person.getPlaceInit() == Place.PHARMACY) {
 				g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}
@@ -43,11 +44,15 @@ public class JPanelInit extends JPanel{
 			g.drawString(String.valueOf(person.getId()), person.getPosX(), person.getPosY());
 			
 			if (person.getPlaceInit() == Place.EXIT) {
-				g.clearRect(person.getPosX(), person.getPosY(), 60, 60);
+//				g.clearRect(person.getPosX(), person.getPosY(), 60, 60);
+				
 //				g.drawImage(new ImageIcon(getClass().getResource("/images/transparente.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}
+			
+			
 		}
 	}
+	
 
 	public void remove() {
 		revalidate();

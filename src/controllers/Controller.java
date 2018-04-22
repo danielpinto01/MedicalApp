@@ -36,6 +36,9 @@ public class Controller implements ActionListener{
 			stopTimerPerson();
 			mainWindow.remove();
 			break;
+		case REPORTS:
+			
+			break;
 		default:
 			break;
 		}
@@ -58,6 +61,11 @@ public class Controller implements ActionListener{
 	public void stopTimerC() {
 		timer.stop();
 	}
+
+	public void starTimerC() {
+		timer.start();
+	}
+
 	
 	public void stopTimerPerson() {
 		manager.stopTimerPerson();
@@ -84,12 +92,12 @@ public class Controller implements ActionListener{
 	}
 
 	public void addPersons(int numberPerson) {
-		int posX = 1200;
+		int posX = 1900;
 		for (int i = 0; i < numberPerson; i++) {
 			Person person = new Person(i, posX, 400, Place.INIT);
 			person.setPlaceFinal(manager.calculateService(person));
 			manager.addPersonToList(person);
-			posX += 80;
+//			posX += 80;
 		}
 	}
 

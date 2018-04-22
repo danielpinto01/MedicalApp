@@ -64,19 +64,22 @@ public class Manager {
 			node.getPerson().initTimer();
 			node = node.getNextNode();
 		}
-		timer = new Timer(new Random().nextInt(5000), new ActionListener() {
+		timer = new Timer(100, new ActionListener() {
 			//			timer = new Timer(1000, new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent t) {
 				Node node = myQueue.getRootNode();
 				while (node != null) {
+					System.out.println(node.getPerson().getId() + "   --------> ");
 					Person person = node.getPerson();
 					if (person.isProxService()) {
 						person.setPlaceInit(person.getPlaceFinal());
 						person.setPlaceFinal(calculateService(person));
 						person.setProxService(false);
 						timer.setDelay(new Random().nextInt(10000));
+					}
+					if (person.getPlaceFinal() == null) {
+						myQueue.delete(node);
 					}
 					node = node.getNextNode();
 				}
