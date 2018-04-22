@@ -2,11 +2,13 @@ package views;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import controllers.Controller;
+import models.Person;
 
 public class MainWindow extends JFrame{
 
@@ -26,10 +28,28 @@ public class MainWindow extends JFrame{
 
 		setVisible(true);
 	}
+	
+	public int getHeightPanel() {
+		return jPanelInit.getHeight();
+	}
+	
+	public int getWidhtPanel() {
+		return jPanelInit.getWidth();
+	}
 
 	public void init() {
 		jPanelInit = new JPanelInit();
 		add(jPanelInit, BorderLayout.CENTER);
+	}
+	
+//	public void addPerson(Person person) {
+//		jPanelInit.setPerson(person);
+//		jPanelInit.repaint();
+//	}
+	
+	public void addPerson(ArrayList<Person> persons) {
+		jPanelInit.setPerson(persons);
+		jPanelInit.repaint();
 	}
 
 }

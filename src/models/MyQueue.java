@@ -38,8 +38,7 @@ public class MyQueue {
 		ArrayList<Node> list = new ArrayList<>();
 		Node actualNode = rootNode;
 		while (actualNode != null) {
-//			list.add(getRootNode());
-			list.add(actualNode); //Revisar 
+			list.add(actualNode);
 			actualNode = actualNode.getNextNode();
 		}
 		return list;
@@ -57,7 +56,5 @@ public class MyQueue {
 
 	public Node getRootNode() {
 		return rootNode;
-	}
-	
-	
+	}	
 }
