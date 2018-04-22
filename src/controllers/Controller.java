@@ -10,17 +10,41 @@ import models.Person;
 import models.Place;
 import views.MainWindow;
 
-public class Controller {
-	
+public class Controller implements ActionListener{
+
 	private MainWindow mainWindow;
 	private Manager manager;
 	private Timer timer;
 	
+	private int numberPerson;
+
 	public Controller() {
 		mainWindow = new MainWindow(this);
 		manager = new Manager();
-		addPersons(80);
+		showDialoginit();
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		switch (Events.valueOf(e.getActionCommand())) {
+		case INIT:
+			mainWindow.ocultDialogInit();
+			initApp();
+			break;
+		case STOP:
+//			manager.stopSimulator();
+//			timer.stop();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	
+	public void initApp() {
+		showPanelinit();
+		addPersons(getNumberPerson(mainWindow.getTextNumberPerson()));
 		manager.initSimulator();
+		
 		timer = new Timer(100, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent t) {
@@ -29,7 +53,19 @@ public class Controller {
 		});
 		timer.start();
 	}
+
+	public int getNumberPerson(int numberPerson) {
+		return this.numberPerson = numberPerson;
+	}
 	
+	public void showDialoginit() {
+		mainWindow.showDialoginit();
+	}
+
+	public void showPanelinit() {
+		mainWindow.showPanelinit();
+	}
+
 	public void addPersons(int numberPerson) {
 		int posX = 1200;
 		for (int i = 0; i < numberPerson; i++) {
@@ -39,4 +75,6 @@ public class Controller {
 			posX += 25;
 		}
 	}
+
+
 }

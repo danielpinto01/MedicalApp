@@ -79,6 +79,10 @@ public class Manager {
 		});
 		timer.start();
 	}
+	
+//	public void stopSimulator() {
+//		timer.stop();
+//	}
 
 	public Place calculateService(Person person) {
 		NodePlace auxNode = myTree.searchNode(person.getPlaceInit());

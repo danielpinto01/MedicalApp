@@ -1,5 +1,5 @@
 package controllers;
 
 public enum Events {
-	STOP, REPORTS;
+	INIT, STOP, REPORTS;
 }

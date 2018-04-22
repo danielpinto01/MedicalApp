@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controllers.Controller;
+import controllers.Events;
 import models.Person;
 
 public class MainWindow extends JFrame{
@@ -20,6 +21,8 @@ public class MainWindow extends JFrame{
 	private JPanel jPanelButtons;
 	private JButton btnStop;
 	private JButton btnReports;
+	
+	private JDialogInit jDialogInit;
 
 	public MainWindow(Controller controller) {
 		setBackground(Color.BLACK);
@@ -30,10 +33,27 @@ public class MainWindow extends JFrame{
 		setLocationRelativeTo(null);
 		setIconImage(new ImageIcon(getClass().getResource("/images/iconApp.png")).getImage());
 		
-		init();
+		jDialogInit = new JDialogInit(this, controller);
+		
+		init(controller);
 
 		setVisible(true);
 	}
+	
+	public void showDialoginit() {
+		jPanelInit.setVisible(false);
+		jDialogInit.setVisible(true);
+//		removeAll();
+	}
+	
+	public void showPanelinit() {
+		jPanelInit.setVisible(true);
+	}
+	
+	public void ocultDialogInit() {
+		jDialogInit.setVisible(false);
+	}
+	
 	
 	public int getHeightPanel() {
 		return jPanelInit.getHeight();
@@ -43,12 +63,14 @@ public class MainWindow extends JFrame{
 		return jPanelInit.getWidth();
 	}
 
-	public void init() {
+	public void init(Controller controller) {
 		jPanelInit = new JPanelInit();
 		add(jPanelInit, BorderLayout.CENTER);
 		jPanelButtons = new JPanel();
 		jPanelButtons.setLayout(new GridLayout(2, 1));
 		btnStop = new JButton("Stop");
+		btnStop.addActionListener(controller);
+		btnStop.setActionCommand(Events.STOP.toString());
 		btnReports = new JButton("Reports");
 		jPanelButtons.add(btnStop);
 		jPanelButtons.add(btnReports);
@@ -59,6 +81,14 @@ public class MainWindow extends JFrame{
 //		jPanelInit.setPerson(person);
 //		jPanelInit.repaint();
 //	}
+	
+	public int getTextNumberPerson() {
+		return jDialogInit.getTextNumberPerson();
+	}
+	
+	public int getTexttime() {
+		return jDialogInit.getTexttime();
+	}
 	
 	public void addPerson(ArrayList<Person> persons) {
 		jPanelInit.setPerson(persons);
