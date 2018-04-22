@@ -18,6 +18,7 @@ public class Manager {
 		myQueue = new MyQueue();
 		initTree();
 	}
+	
 
 	public void initTree() {
 		NodePlace init = new NodePlace(Place.INIT);
@@ -60,6 +61,7 @@ public class Manager {
 			node = node.getNextNode();
 		}
 		timer = new Timer(1000, new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent t) {
 				Node node = myQueue.getRootNode();
@@ -89,6 +91,7 @@ public class Manager {
 		}
 		return null;
 	}
+	
 
 	public MyTree getMyTree() {
 		return myTree;
@@ -109,4 +112,5 @@ public class Manager {
 	public MyQueue getMyQueue() {
 		return myQueue;
 	}
+	
 }

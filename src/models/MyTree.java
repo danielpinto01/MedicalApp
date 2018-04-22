@@ -16,7 +16,6 @@ public class MyTree {
 		print(rootTree, "");
 	}
 	
-
 	private void print(NodePlace fatherNode, String info) {
 		if (fatherNode != null) {
 			System.out.println(info + fatherNode);
