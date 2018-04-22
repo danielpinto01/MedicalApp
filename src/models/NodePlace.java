@@ -11,6 +11,7 @@ public class NodePlace {
 		this.place = place;
 		nodes = new ArrayList<>();
 	}
+	
 
 	public Place getPlace() {
 		return place;
