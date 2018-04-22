@@ -31,6 +31,7 @@ public class Manager {
 		NodePlace pharmacyTwo = new NodePlace(Place.PHARMACY);
 		NodePlace billingTwo = new NodePlace(Place.BILLING);
 		NodePlace billingTree = new NodePlace(Place.BILLING);
+		NodePlace exit = new NodePlace(Place.EXIT);
 		myTree = new MyTree(init);
 		myTree.addNode(init, query);
 		myTree.addNode(init, quote);
@@ -41,6 +42,7 @@ public class Manager {
 		myTree.addNode(pharmacy, billing);
 		myTree.addNode(pharmacyTwo, billingTwo);
 		myTree.addNode(quote, billingTree);
+		myTree.addNode(billing, exit);
 		myTree.print();
 	}
 

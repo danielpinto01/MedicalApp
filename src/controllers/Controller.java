@@ -43,7 +43,7 @@ public class Controller implements ActionListener{
 		addPersons(getNumberPerson(mainWindow.getTextNumberPerson()));
 		manager.initSimulator();
 		
-		timer = new Timer(10, new ActionListener() {
+		timer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent t) {
 				mainWindow.addPerson(manager.getList());
@@ -74,7 +74,7 @@ public class Controller implements ActionListener{
 			Person person = new Person(i, posX, 400, Place.INIT);
 			person.setPlaceFinal(manager.calculateService(person));
 			manager.addPersonToList(person);
-			posX += 30;
+			posX += 25;
 		}
 	}
 

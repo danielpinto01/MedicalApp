@@ -10,7 +10,9 @@ public enum Place {
 	NORMAL_QUERY(500, 50, "General", "/images/general.png"), 
 	PHARMACY(400, 400, "Farmacia", "/images/farmacia.png"), 
 	BILLING(900, 600, "facturacion", "/images/facturacion.png"), 
-	INIT(1400, 400, "facturacion", "/images/init.png");
+	INIT(1400, 300, "Entrada", "/images/init.png"),
+	EXIT(1400, 600, "Salida", "/images/exit.png");
+	
 	
 	private int posX, posY;
 	private String name;
