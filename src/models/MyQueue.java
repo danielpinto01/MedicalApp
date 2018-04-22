@@ -17,6 +17,7 @@ public class MyQueue {
 			rootNode = node;
 		}
 	}
+	
 
 	public Node removeFirstNode(){
 		Node first = rootNode;
@@ -43,6 +44,7 @@ public class MyQueue {
 		}
 		return list;
 	}
+	
 	
 	public int size() {
 		int size = 0;
