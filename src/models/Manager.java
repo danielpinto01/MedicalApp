@@ -13,11 +13,13 @@ public class Manager {
 	private MyTree myTree;
 
 	private Timer timer;
-
+	private ArrayList<Person> personList;
 	private Person person;
+	
 
 	public Manager() {
 		myQueue = new MyQueue();
+		personList = new ArrayList<>();
 		initTree();
 	}
 
@@ -70,7 +72,7 @@ public class Manager {
 			public void actionPerformed(ActionEvent t) {
 				Node node = myQueue.getRootNode();
 				while (node != null) {
-					System.out.println(node.getPerson().getId() + "   --------> ");
+//					System.out.println(node.getPerson().getId() + "   --------> ");
 					Person person = node.getPerson();
 					if (person.isProxService()) {
 						person.setPlaceInit(person.getPlaceFinal());
@@ -79,6 +81,9 @@ public class Manager {
 						timer.setDelay(new Random().nextInt(10000));
 					}
 					if (person.getPlaceFinal() == null) {
+						
+						person.setEnd(System.currentTimeMillis());
+						personList.add(person);
 						myQueue.delete(node);
 					}
 					node = node.getNextNode();
@@ -88,7 +93,13 @@ public class Manager {
 		timer.start();
 	}
 
-
+	public void getTime() {
+		for (Person person : personList) {
+			System.out.println("id " + person.getId() + " ti " + (person.getEnd() - person.getInit()));
+		}
+	}
+	
+	
 	public Place calculateService(Person person) {
 		NodePlace auxNode = myTree.searchNode(person.getPlaceInit());
 		if (auxNode.getNodes().size() > 0) {

@@ -72,6 +72,8 @@ public class MainWindow extends JFrame{
 		btnStop.addActionListener(controller);
 		btnStop.setActionCommand(Events.STOP.toString());
 		btnReports = new JButton("Reports");
+		btnReports.addActionListener(controller);
+		btnReports.setActionCommand(Events.REPORTS.toString());
 		jPanelButtons.add(btnStop);
 		jPanelButtons.add(btnReports);
 		add(jPanelButtons, BorderLayout.EAST);

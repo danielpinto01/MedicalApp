@@ -17,6 +17,9 @@ public class Person {
 
 	private boolean proxService;
 	private Timer timer;
+	
+	private double init;
+	private double end;
 
 	public Person(int id, int posX, int posY, Place placeInit) {
 		this.id = id;
@@ -82,6 +85,7 @@ public class Person {
 
 	public void initTimer() {
 		//Tiempo que dura la persona en moverse de un servicio a otro
+		init = System.currentTimeMillis();
 		timer = new Timer(new Random().nextInt(100), new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent t) {
@@ -94,6 +98,24 @@ public class Person {
 		timer.start();
 	}
 	
+	
+	
+	public double getEnd() {
+		return end;
+	}
+
+	public void setEnd(double end) {
+		this.end = end;
+	}
+
+	public double getInit() {
+		return init;
+	}
+
+	public void setInit(double init) {
+		this.init = init;
+	}
+
 	public void stopTimerPerson() {
 		timer.stop();
 	}

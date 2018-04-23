@@ -29,6 +29,7 @@ public class Controller implements ActionListener{
 		case INIT:
 			mainWindow.ocultDialogInit();
 			initApp();
+			
 			break;
 		case STOP:
 			stopTimerC();
@@ -37,7 +38,8 @@ public class Controller implements ActionListener{
 			mainWindow.remove();
 			break;
 		case REPORTS:
-			
+			manager.getTime();
+			System.out.println("JAJA");
 			break;
 		default:
 			break;

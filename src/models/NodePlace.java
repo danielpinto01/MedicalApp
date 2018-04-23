@@ -12,7 +12,6 @@ public class NodePlace {
 		nodes = new ArrayList<>();
 	}
 	
-
 	public Place getPlace() {
 		return place;
 	}
