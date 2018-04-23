@@ -107,10 +107,6 @@ public class MainWindow extends JFrame{
 		return jDialogInit.getTextNumberPerson();
 	}
 	
-	public int getTexttime() {
-		return jDialogInit.getTexttime();
-	}
-	
 	public void addPerson(ArrayList<Person> persons) {
 		jPanelInit.setPerson(persons);
 		jPanelInit.repaint();

@@ -55,11 +55,11 @@ public class Controller implements ActionListener, KeyListener{
 	}
 	
 	public void addProduct(int numberProduct) {
-		int posX = 600;
+		int posX = 10;
 		for (int i = 0; i < numberProduct; i++) {
-			product = new Product(i, posX, 400, Place.PHARMACY);
+			product = new Product(i, posX, 10, Place.PHARMACY);
 			manager.addProductToStack(product);
-			System.out.println(product.getIdProduct());
+//			System.out.println(product.getIdProduct());
 			posX += 20;
 		}
 	}
