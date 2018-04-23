@@ -46,7 +46,7 @@ public class JDialogReport extends JDialog{
 		}
 
 		defaultTableModel = new DefaultTableModel();
-		defaultTableModel.setColumnIdentifiers(new Object[]{"Id" , "Hora de entrada", "hora de Salida"});
+		defaultTableModel.setColumnIdentifiers(new Object[]{"Id" , "Hora de entrada", "hora de Salida", "Tiempo de recorrido"});
 		userTable = new JTable(defaultTableModel);
 
 		c.gridy = 0;

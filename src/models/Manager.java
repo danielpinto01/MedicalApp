@@ -2,8 +2,12 @@ package models;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.TimeZone;
 
 import javax.swing.Timer;
 
@@ -81,8 +85,10 @@ public class Manager {
 						timer.setDelay(new Random().nextInt(10000));
 					}
 					if (person.getPlaceFinal() == null) {
-						
 						person.setEnd(System.currentTimeMillis());
+//						DateFormat df = new SimpleDateFormat("HH 'hours', mm 'mins,' ss 'seconds'");
+//						df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+//						System.out.println(df.format(new Date((long)person.getEnd())));
 						personList.add(person);
 						myQueue.delete(node);
 					}
@@ -95,7 +101,10 @@ public class Manager {
 
 	public void getTime() {
 		for (Person person : personList) {
-			System.out.println("id " + person.getId() + " ti " + (person.getEnd() - person.getInit()));
+			DateFormat df = new SimpleDateFormat("HH 'hours', mm 'mins,' ss 'seconds'");
+			df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+			System.out.println(df.format(new Date((long)person.getEnd())));
+//			System.out.println("id " + person.getId() + " ti " + (person.getEnd() - person.getInit()));
 		}
 	}
 	
@@ -104,7 +113,7 @@ public class Manager {
 		NodePlace auxNode = myTree.searchNode(person.getPlaceInit());
 		if (auxNode.getNodes().size() > 0) {
 			int child = auxNode.getNodes().size();
-			System.out.println(child);
+//			System.out.println(child);
 			Random random = new Random();
 			int position = random.nextInt(child);
 			return auxNode.getNodes().get(position).getPlace();

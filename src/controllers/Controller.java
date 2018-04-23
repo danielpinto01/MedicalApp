@@ -8,7 +8,6 @@ import java.util.Random;
 import javax.swing.Timer;
 
 import models.Manager;
-import models.Node;
 import models.Person;
 import models.Place;
 import views.MainWindow;
@@ -43,8 +42,8 @@ public class Controller implements ActionListener{
 		case SHOW_DIALOG_REPORTS:
 //			manager.getTime();
 //			System.out.println("JAJA");
-			mainWindow.showDialogReports();
 			addPerson();
+			mainWindow.showDialogReports();
 			break;
 		default:
 			break;
@@ -104,7 +103,7 @@ public class Controller implements ActionListener{
 			person = new Person(i, posX, 400, Place.INIT);
 			person.setPlaceFinal(manager.calculateService(person));
 			manager.addPersonToList(person);
-//			posX += 80;
+			posX += 50;
 		}
 	}
 	
@@ -112,7 +111,7 @@ public class Controller implements ActionListener{
 		ArrayList<Person> personList = manager.getPersonListToTable();
 		for (Person person : personList) {
 			mainWindow.addToTable(person);
-			System.out.println(person);
+//			System.out.println(person);
 		}
 //		System.out.println(personList);
 	}

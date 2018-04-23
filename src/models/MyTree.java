@@ -18,7 +18,7 @@ public class MyTree {
 	
 	private void print(NodePlace fatherNode, String info) {
 		if (fatherNode != null) {
-			System.out.println(info + fatherNode);
+//			System.out.println(info + fatherNode);
 			for (NodePlace node : fatherNode.getNodes()) {
 				print(node, info + "-");
 			}

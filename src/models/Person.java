@@ -2,7 +2,11 @@ package models;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Random;
+import java.util.TimeZone;
 
 import javax.swing.Timer;
 
@@ -18,8 +22,14 @@ public class Person {
 	private boolean proxService;
 	private Timer timer;
 	
-	private double init;
-	private double end;
+	private long init;
+	private long end;
+	
+	private long totalTime;
+	
+	private String timeInit;
+	private String timeEnd;
+	private String travelTime;
 
 	public Person(int id, int posX, int posY, Place placeInit) {
 		this.id = id;
@@ -67,7 +77,7 @@ public class Person {
 	public void setPlaceFinal(Place placeFinal) {
 		this.placeFinal = placeFinal;
 	}
-
+	
 	public void movePerson() {
 		if (placeInit != null && placeFinal != null) {
 			if (posX < placeFinal.getPosX()) {
@@ -98,22 +108,40 @@ public class Person {
 		timer.start();
 	}
 	
-	
-	
 	public double getEnd() {
 		return end;
 	}
 
-	public void setEnd(double end) {
+	public void setEnd(long end) {
 		this.end = end;
 	}
 
-	public double getInit() {
+	public String convertTimeInit() {
+		timeInit = String.format("%tT", init-TimeZone.getDefault().getRawOffset());
+		return timeInit;
+	}
+	
+	public String convertTimeEnd() {
+		timeEnd = String.format("%tT", end-TimeZone.getDefault().getRawOffset());
+		return timeEnd;
+	}
+
+	public long getInit() {
 		return init;
 	}
 
-	public void setInit(double init) {
+	public void convertTimeInit(long init) {
+		
+	}
+
+	public void setInit(long init) {
 		this.init = init;
+	}
+	
+	public String getTravelTime() {
+		totalTime = (end - init);
+		travelTime = String.format("%tT", totalTime-TimeZone.getDefault().getRawOffset());
+		return travelTime;
 	}
 
 	public void stopTimerPerson() {
@@ -143,6 +171,6 @@ public class Person {
 	}
 	
 	public Object[] toArray(){
-		return new Object[]{id, init, end};
+		return new Object[]{id, convertTimeInit(), convertTimeEnd(), getTravelTime()};
 	}
 }
