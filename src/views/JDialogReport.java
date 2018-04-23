@@ -5,11 +5,14 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTable.PrintMode;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.Controller;
@@ -61,7 +64,7 @@ public class JDialogReport extends JDialog{
 		c.gridx = 0;
 		c.gridwidth = 1;
 		btnPrint= new JButton("Print");
-		btnPrint.setBackground(Color.GREEN);
+		btnPrint.setBackground(Color.BLACK);
 		btnPrint.setForeground(Color.WHITE);
 		btnPrint.setFont(new Font("Arial", 0, 16));
 		btnPrint.addActionListener(controller);
@@ -75,5 +78,11 @@ public class JDialogReport extends JDialog{
 	
 	public void clearList() {
 		defaultTableModel.setRowCount(0);
+	}
+	
+	public void printTable() throws PrinterException {
+		MessageFormat north = new MessageFormat("LISTA DE PERSONAS");
+		MessageFormat south = new MessageFormat("By Daniel Pinto :v");
+		userTable.print(PrintMode.NORMAL, north, south);
 	}
 }

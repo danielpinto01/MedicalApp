@@ -20,10 +20,14 @@ public class Manager {
 	private ArrayList<Person> personList;
 	private Person person;
 	
+	private MyStack myStack;
+	private ArrayList<Product> productList;
 
 	public Manager() {
 		myQueue = new MyQueue();
 		personList = new ArrayList<>();
+		myStack = new MyStack();
+		productList = new ArrayList<>();
 		initTree();
 	}
 
@@ -163,5 +167,25 @@ public class Manager {
 	public MyQueue getMyQueue() {
 		return myQueue;
 	}
+	
+	public MyStack getMyStack() {
+		return myStack;
+	}
 
+	public void setMyStack(MyStack myStack) {
+		this.myStack = myStack;
+	}
+
+	public ArrayList<Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(ArrayList<Product> productList) {
+		this.productList = productList;
+	}
+
+
+	public void addProductToStack(Product product) {
+		myStack.addFirst(new NodeProduct(product));
+	}
 }

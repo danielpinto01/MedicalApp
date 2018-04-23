@@ -2,26 +2,34 @@ package models;
 
 public class MyStack {
 
-	private Node headNode;
+	private NodeProduct headNode;
 
-	public void addNode(Node node){
-		node.setNextNode(headNode);
-		headNode = node;
+	public void addFirst(NodeProduct node) {
+		NodeProduct actual = headNode;
+		if (actual != null) {
+			node.setNextNode(headNode);
+			headNode = node;
+		} else {
+			headNode = node;
+		}
 	}
 	
-	public Node deleteNode(){
-		Node actualNode = headNode;
-		if(headNode != null){
-			headNode = headNode.getNextNode();
-		}
-		actualNode.setNextNode(null);
-		return actualNode;
+	public NodeProduct getFirst() {
+		NodeProduct first = headNode;
+		headNode = headNode.getNextNode();
+		first.setNextNode(null);
+		return first;
 	}
 	
-	public void deleteAll(){
-		while(headNode != null){
-			headNode = headNode.getNextNode();
+	public void print() {
+		NodeProduct actual = headNode;
+		while (actual != null) {
+			System.out.println(actual.getProduct());
+			actual = actual.getNextNode();
 		}
-		headNode = null;
+	}
+	
+	public NodeProduct getHead() {
+		return headNode;
 	}
 }

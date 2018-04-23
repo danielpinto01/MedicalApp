@@ -1,10 +1,18 @@
 package test;
 
-import java.util.Random;
+import models.MyStack;
+import models.NodeProduct;
+import models.Place;
+import models.Product;
 
 public class Test {
 
 	public static void main(String[] args) {
-		System.err.println(new Random().nextInt(0));
+		MyStack myStack = new MyStack();
+		myStack.addFirst(new NodeProduct(new Product(0, 200, 200, Place.PHARMACY)));
+		myStack.addFirst(new NodeProduct(new Product(1, 200, 200, Place.PHARMACY)));
+		myStack.addFirst(new NodeProduct(new Product(2, 200, 200, Place.PHARMACY)));
+		myStack.getFirst();
+		myStack.print();
 	}
 }

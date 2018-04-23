@@ -10,16 +10,19 @@ import javax.swing.JPanel;
 
 import models.Person;
 import models.Place;
+import models.Product;
 
 public class JPanelInit extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Person> personList;
+	private ArrayList<Product> productList;
 	//	private Person person;
 
 	public JPanelInit() {
 		setBackground(Color.PINK);
 		personList = new ArrayList<>();
+		productList = new ArrayList<>();
 	}
 
 	@Override
@@ -36,25 +39,32 @@ public class JPanelInit extends JPanel{
 		g.drawImage(Place.EXIT.getImage().getImage(), Place.EXIT.getPosX(), Place.EXIT.getPosY(), 150, 150, this);
 
 		for (Person person : personList) {
-//			g.drawLine(1900, 400, person.getPosX(), person.getPosY());
+			//			g.drawLine(1900, 400, person.getPosX(), person.getPosY());
 			if (person.getPlaceInit() == Place.PHARMACY) {
 				g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}else {
 				g.drawImage(new ImageIcon(getClass().getResource("/images/cam.gif")).getImage(), person.getPosX(),  person.getPosY(), 60, 60, this);
 			}
-//			g.drawString(String.valueOf(person.getId()), person.getPosX(), person.getPosY());
-
+			//			g.drawString(String.valueOf(person.getId()), person.getPosX(), person.getPosY());
+		}
+		for (Product product : productList) {
+			g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), product.getPosX(),  product.getPosY(), 20, 20, this);
+			System.out.println(product.getIdProduct());
 		}
 	}
 
 
-public void remove() {
-	revalidate();
-	repaint();
-	removeAll();
-}
+	public void remove() {
+		revalidate();
+		repaint();
+		removeAll();
+	}
 
-public void setPerson(ArrayList<Person> persons) {
-	this.personList = persons;
-}
+	public void setPerson(ArrayList<Person> persons) {
+		this.personList = persons;
+	}
+	
+	public void setProduct(ArrayList<Product> products) {
+		this.productList = products;
+	}
 }

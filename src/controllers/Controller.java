@@ -2,22 +2,29 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import models.Manager;
 import models.Person;
 import models.Place;
+import models.Product;
+import sun.security.krb5.internal.ktab.KeyTabConstants;
 import views.MainWindow;
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener, KeyListener{
 
 	private MainWindow mainWindow;
 	private Manager manager;
 	private Timer timer;
 	private Person person;
+	private Product product;
 	
 	public Controller() {
 		mainWindow = new MainWindow(this);
@@ -31,29 +38,37 @@ public class Controller implements ActionListener{
 		case INIT:
 			mainWindow.ocultDialogInit();
 			initApp();
-			
-			break;
-		case STOP:
-			stopTimerC();
-			stopTimerManager();
-			stopTimerPerson();
-			mainWindow.remove();
+			mainWindow.addProduct(manager.getProductList());
 			break;
 		case SHOW_DIALOG_REPORTS:
-//			manager.getTime();
-//			System.out.println("JAJA");
 			addPerson();
 			mainWindow.showDialogReports();
+			showDialoginit();
+			showPanelinit();
+			break;
+		case PRINT_TABLE:
+			printTable();
 			break;
 		default:
 			break;
 		}
 	}
 	
+	public void addProduct(int numberProduct) {
+		int posX = 600;
+		for (int i = 0; i < numberProduct; i++) {
+			product = new Product(i, posX, 400, Place.PHARMACY);
+			manager.addProductToStack(product);
+			System.out.println(product.getIdProduct());
+			posX += 20;
+		}
+	}
 	
 	public void initApp() {
 		addPersons(getNumberPerson(mainWindow.getTextNumberPerson()));
+		addProduct(getNumberPerson(mainWindow.getTextNumberPerson()));
 		manager.initSimulator();
+	
 		//Tiempo de lugar a lugar
 		timer = new Timer(new Random().nextInt(100), new ActionListener() {
 			@Override
@@ -63,22 +78,9 @@ public class Controller implements ActionListener{
 		});
 		timer.start();
 	}
-	
-	public void stopTimerC() {
-		timer.stop();
-	}
 
 	public void starTimerC() {
 		timer.start();
-	}
-
-	
-	public void stopTimerPerson() {
-		manager.stopTimerPerson();
-	}
-
-	public void stopTimerManager() {
-		manager.stopTimerManager();
 	}
 
 	public int getNumberPerson(int numberPerson) {
@@ -124,5 +126,29 @@ public class Controller implements ActionListener{
 		manager.addpersonToListTable(person);
 		clearList();
 		sendPersonToList();
+	}
+	
+	public void printTable() {
+		try {
+			mainWindow.printTable();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(mainWindow, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
 	}
 }

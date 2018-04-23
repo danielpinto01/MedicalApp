@@ -3,17 +3,21 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable.PrintMode;
 
 import controllers.Controller;
 import controllers.Events;
 import models.Node;
 import models.Person;
+import models.Product;
 
 public class MainWindow extends JFrame{
 
@@ -84,8 +88,6 @@ public class MainWindow extends JFrame{
 		jPanelButtons = new JPanel();
 		jPanelButtons.setLayout(new GridLayout(2, 1));
 		btnStop = new JButton("Stop");
-		btnStop.addActionListener(controller);
-		btnStop.setActionCommand(Events.STOP.toString());
 		btnReports = new JButton("Reports");
 		btnReports.addActionListener(controller);
 		btnReports.setActionCommand(Events.SHOW_DIALOG_REPORTS.toString());
@@ -93,11 +95,9 @@ public class MainWindow extends JFrame{
 		jPanelButtons.add(btnReports);
 		add(jPanelButtons, BorderLayout.EAST);
 	}
-	
-//	public void addPerson(Person person) {
-//		jPanelInit.setPerson(person);
-//		jPanelInit.repaint();
-//	}
+	public void printTable() throws PrinterException {
+		jDialogReport.printTable();
+	}
 	
 	public void remove() {
 		jPanelInit.remove();
@@ -113,6 +113,11 @@ public class MainWindow extends JFrame{
 	
 	public void addPerson(ArrayList<Person> persons) {
 		jPanelInit.setPerson(persons);
+		jPanelInit.repaint();
+	}
+	
+	public void addProduct(ArrayList<Product> products) {
+		jPanelInit.setProduct(products);
 		jPanelInit.repaint();
 	}
 	
