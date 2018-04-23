@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import controllers.Controller;
 import controllers.Events;
+import models.Node;
 import models.Person;
 
 public class MainWindow extends JFrame{
@@ -23,6 +24,7 @@ public class MainWindow extends JFrame{
 	private JButton btnReports;
 	
 	private JDialogInit jDialogInit;
+	private JDialogReport jDialogReport;
 
 	public MainWindow(Controller controller) {
 		setBackground(Color.BLACK);
@@ -34,10 +36,23 @@ public class MainWindow extends JFrame{
 		setIconImage(new ImageIcon(getClass().getResource("/images/iconApp.png")).getImage());
 		
 		jDialogInit = new JDialogInit(this, controller);
+		jDialogReport = new JDialogReport(this, controller);
 		
 		init(controller);
 
 		setVisible(true);
+	}
+	
+	public void showDialogReports() {
+		jDialogReport.setVisible(true);
+	}
+	
+	public void ocultDialogReports() {
+		jDialogReport.setVisible(false);
+	}
+	
+	public void addToTable(Person person) {
+		jDialogReport.addToTable(person);
 	}
 	
 	public void showDialoginit() {
@@ -73,7 +88,7 @@ public class MainWindow extends JFrame{
 		btnStop.setActionCommand(Events.STOP.toString());
 		btnReports = new JButton("Reports");
 		btnReports.addActionListener(controller);
-		btnReports.setActionCommand(Events.REPORTS.toString());
+		btnReports.setActionCommand(Events.SHOW_DIALOG_REPORTS.toString());
 		jPanelButtons.add(btnStop);
 		jPanelButtons.add(btnReports);
 		add(jPanelButtons, BorderLayout.EAST);
@@ -99,6 +114,10 @@ public class MainWindow extends JFrame{
 	public void addPerson(ArrayList<Person> persons) {
 		jPanelInit.setPerson(persons);
 		jPanelInit.repaint();
+	}
+	
+	public void clearList() {
+		jDialogReport.clearList();
 	}
 
 }

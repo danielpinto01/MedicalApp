@@ -141,4 +141,8 @@ public class Person {
 		}
 		return false;
 	}
+	
+	public Object[] toArray(){
+		return new Object[]{id, init, end};
+	}
 }

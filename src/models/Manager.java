@@ -135,6 +135,21 @@ public class Manager {
 	public ArrayList<Node> getInfoList() {
 		return myQueue.getInfoList();
 	}
+	
+	
+	public void addpersonToListTable(Person person) {
+		personList.add(person);
+	}
+
+	public ArrayList<Person> getPersonListToTable() {
+		return personList;
+	}
+
+
+	public void setPersonListToTable(ArrayList<Person> personList) {
+		this.personList = personList;
+	}
+
 
 	public MyQueue getMyQueue() {
 		return myQueue;

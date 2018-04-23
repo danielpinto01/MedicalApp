@@ -2,11 +2,13 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.Timer;
 
 import models.Manager;
+import models.Node;
 import models.Person;
 import models.Place;
 import views.MainWindow;
@@ -16,6 +18,7 @@ public class Controller implements ActionListener{
 	private MainWindow mainWindow;
 	private Manager manager;
 	private Timer timer;
+	private Person person;
 	
 	public Controller() {
 		mainWindow = new MainWindow(this);
@@ -37,9 +40,11 @@ public class Controller implements ActionListener{
 			stopTimerPerson();
 			mainWindow.remove();
 			break;
-		case REPORTS:
-			manager.getTime();
-			System.out.println("JAJA");
+		case SHOW_DIALOG_REPORTS:
+//			manager.getTime();
+//			System.out.println("JAJA");
+			mainWindow.showDialogReports();
+			addPerson();
 			break;
 		default:
 			break;
@@ -96,12 +101,29 @@ public class Controller implements ActionListener{
 	public void addPersons(int numberPerson) {
 		int posX = 1900;
 		for (int i = 0; i < numberPerson; i++) {
-			Person person = new Person(i, posX, 400, Place.INIT);
+			person = new Person(i, posX, 400, Place.INIT);
 			person.setPlaceFinal(manager.calculateService(person));
 			manager.addPersonToList(person);
 //			posX += 80;
 		}
 	}
-
-
+	
+	public void sendPersonToList() {
+		ArrayList<Person> personList = manager.getPersonListToTable();
+		for (Person person : personList) {
+			mainWindow.addToTable(person);
+			System.out.println(person);
+		}
+//		System.out.println(personList);
+	}
+	
+	public void clearList() {
+		mainWindow.clearList();
+	}
+	
+	public void addPerson() {
+		manager.addpersonToListTable(person);
+		clearList();
+		sendPersonToList();
+	}
 }
