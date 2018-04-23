@@ -18,7 +18,7 @@ public class JPanelInit extends JPanel{
 //	private Person person;
 	
 	public JPanelInit() {
-//		setBackground(Color.DARK_GRAY);
+		setBackground(Color.PINK);
 		personList = new ArrayList<>();
 	}
 	
