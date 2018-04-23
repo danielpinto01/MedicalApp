@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import models.Person;
@@ -51,13 +50,13 @@ public class JPanelInit extends JPanel{
 		for (Person person : personList) {
 			//			g.drawLine(1900, 400, person.getPosX(), person.getPosY());
 			if (person.getPlaceInit() == Place.PHARMACY) {
-				g.drawImage(new ImageIcon(getClass().getResource("/images/personLeft.gif")).getImage(), person.getPosX(),  person.getPosY(), 90, 90, this);
+				g.drawImage(new ImageIcon(getClass().getResource("/images/personLeft.png")).getImage(), person.getPosX(),  person.getPosY(), 90, 90, this);
 				g.drawImage(new ImageIcon(getClass().getResource("/images/pill.png")).getImage(), person.getPosX(),  person.getPosY(), 40, 40, this);
 			}else if (person.getPlaceInit() == Place.NORMAL_QUERY) {
-				g.drawImage(new ImageIcon(getClass().getResource("/images/personRight.gif")).getImage(), person.getPosX(),  person.getPosY(), 90, 90, this);
+				g.drawImage(new ImageIcon(getClass().getResource("/images/personRight.png")).getImage(), person.getPosX(),  person.getPosY(), 90, 90, this);
 				
 			}else {
-				g.drawImage(new ImageIcon(getClass().getResource("/images/personLeft.gif")).getImage(), person.getPosX(),  person.getPosY(), 90, 90, this);
+				g.drawImage(new ImageIcon(getClass().getResource("/images/personLeft.png")).getImage(), person.getPosX(),  person.getPosY(), 90, 90, this);
 			}
 			//		g.drawString(String.valueOf(person.getId()), person.getPosX(), person.getPosY());
 		}

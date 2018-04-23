@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,7 +14,6 @@ import models.Manager;
 import models.Person;
 import models.Place;
 import models.Product;
-import sun.security.krb5.internal.ktab.KeyTabConstants;
 import views.MainWindow;
 
 public class Controller implements ActionListener, KeyListener{
@@ -43,11 +41,15 @@ public class Controller implements ActionListener, KeyListener{
 		case SHOW_DIALOG_REPORTS:
 			addPerson();
 			mainWindow.showDialogReports();
-			showDialoginit();
-			showPanelinit();
 			break;
 		case PRINT_TABLE:
 			printTable();
+			break;
+		case SHOW_DIALOG_ABOUT:
+			mainWindow.showDialogAbout();
+			break;
+		case EXIT:
+			System.exit(0);
 			break;
 		default:
 			break;

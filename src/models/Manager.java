@@ -18,7 +18,6 @@ public class Manager {
 
 	private Timer timer;
 	private ArrayList<Person> personList;
-	private Person person;
 	
 	private MyStack myStack;
 	private ArrayList<Product> productList;

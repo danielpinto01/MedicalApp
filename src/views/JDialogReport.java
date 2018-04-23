@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.print.PrinterException;
 import java.text.MessageFormat;
 
@@ -30,7 +29,7 @@ public class JDialogReport extends JDialog{
 		super(mainWindow, true);
 		setLayout(new GridBagLayout());
 		setTitle("Reports");
-		setSize(500, 300);
+		setSize(500, 600);
 		setLocationRelativeTo(null);
 		getContentPane().setBackground(Color.WHITE);
 		setLocationRelativeTo(mainWindow);
@@ -49,7 +48,7 @@ public class JDialogReport extends JDialog{
 		}
 
 		defaultTableModel = new DefaultTableModel();
-		defaultTableModel.setColumnIdentifiers(new Object[]{"Id" , "Hora de entrada", "hora de Salida", "Tiempo de recorrido"});
+		defaultTableModel.setColumnIdentifiers(new Object[]{"ID" , "TIME OF ENTRY", "DEPARTURE TIME", "TRAVEL TIME"});
 		userTable = new JTable(defaultTableModel);
 
 		c.gridy = 0;
@@ -64,7 +63,7 @@ public class JDialogReport extends JDialog{
 		c.gridx = 0;
 		c.gridwidth = 1;
 		btnPrint= new JButton("Print");
-		btnPrint.setBackground(Color.BLACK);
+		btnPrint.setBackground(Color.decode("#1976D2"));
 		btnPrint.setForeground(Color.WHITE);
 		btnPrint.setFont(new Font("Arial", 0, 16));
 		btnPrint.addActionListener(controller);
@@ -81,7 +80,7 @@ public class JDialogReport extends JDialog{
 	}
 	
 	public void printTable() throws PrinterException {
-		MessageFormat north = new MessageFormat("LISTA DE PERSONAS");
+		MessageFormat north = new MessageFormat("PERSON LIST");
 		MessageFormat south = new MessageFormat("By Daniel Pinto :v");
 		userTable.print(PrintMode.NORMAL, north, south);
 	}
